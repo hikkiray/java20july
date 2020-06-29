@@ -1,0 +1,5 @@
+@bigcompany.com
+mymail@
+empty
+@
+fake@mail@test.com

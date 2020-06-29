@@ -1,0 +1,1075 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'/><title>7 Вложенные циклы</title><style>.check_single {
+    margin:15px;
+	border:1px solid black;
+	padding:5px;
+    width:calc(100% - 40px);
+}
+sqrt val {
+	border-top: 1px solid black;
+}
+sqrt:before {
+	content:"\221A";
+}
+.section {
+	counter-reset:section;
+}
+.section h3:after {
+	counter-increment:section;
+	content: " " counter(section);
+}
+table {
+	border-collapse:collapse;
+}
+.check_values {
+	width:100%;
+	counter-reset:test_case;
+}
+.check_values td:first-child::before {
+	counter-increment:test_case;
+	content: counter(test_case);
+}
+table td, table th {
+	border:1px solid black;
+	text-align:center;
+}
+.check_values td:first-child{
+	width:40px;
+}
+.lab_nav ol {
+	list-style:none;
+}
+.nav {
+	position:fixed;
+	top:0px;
+	right:0px;
+	margin:15px;
+	clear:both;
+}
+.nav ul{
+	list-style-type:none;
+	padding:0px;
+	float:left;
+}
+.nav li {
+	margin:2px;
+	border:1px solid black;
+}
+.nav li a {
+	display:block;
+	padding:7px;
+}
+.task_block {
+	width:80%;
+	page-break-inside:avoid;
+	padding:10px;
+	display:block;
+}
+.task_block:target{
+	background-color:lightgrey;
+}
+.task_block:target .task_id{
+	color:white;
+}
+.task_id {
+	float:right;
+	color:lightgrey;
+}
+.quiz_block {
+	width:80%;
+}
+.quiz_block:target{
+	background-color:lightgrey;
+}
+.task_desc {
+	margin:5px;
+}
+.example_image {
+	width:200px;
+}
+.lab_nav {
+	width:80%;
+	overflow:auto;
+}
+.check_values .preformatted, .preformatted {
+	font-family:monospace;
+	white-space:pre;
+	text-align:left;
+	padding:10px;
+}
+.check_values tr:target {
+    background-color:lightgrey;
+}
+formula {
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+}
+fraction {
+	display:inline-block;
+	text-align:center;
+	vertical-align:middle;
+	font-weight:bold;
+}
+formula .abs{
+	border-left: solid black 1px;
+    border-right: solid black 1px;
+    padding: 2px;
+}
+numerator {
+	display:block;
+	border-bottom:2px solid black;
+}
+denominator {
+	display:block;
+}
+spoiler {
+	color:darkgrey;
+}
+spoiler origin {
+	display:none;
+}
+spoiler:hover origin {
+	display:inline;
+}
+spoiler trans {
+	display:inline;
+}
+spoiler:hover trans {
+	display:none;
+}
+.comment{
+	color:darkgrey;
+}
+.step{
+	display:none;
+}
+.step:last-child, .step:target{
+	display:block;
+}
+.step:target ~ .step:last-child{
+	display:none;
+}
+.console{
+	background-color:black;
+	color:white;
+	width:300px;
+}
+zoom{
+	background-color:gray;
+	font-size:40pt;
+}
+@media print {
+	.nav {
+		display:none;
+	}
+	.lab_nav {
+		display:none;
+	}
+	ol li {
+		margin-bottom:30px;
+	}
+	.quiz_block {
+		width:100%;
+	}
+	.hide_on_print .check_values, .hide_on_print .check_single{
+		display:none;
+	}
+	.hide_on_print img{
+		display:none;
+	}
+	.empty_on_print td{
+		color:transparent;
+	}
+	.empty_on_print img{
+		visibility:hidden;
+	}
+}</style><meta name="author" content="Подборка задач, выбор порядка подачи и подготовка тестовых данных - Крюков Александр, Омск 2013-2019"/></head><body class='section'><a name='heading'><h1>Вложенные циклы</h1></a><div class='lab_nav'>Другие темы<ol><li>1 <a href='Задания к 1 практической работе.html'>Заполнение шаблона текстом</a></li><li>2 <a href='Задания к 2 практической работе.html'>Организация вычислений</a></li><li>3 <a href='Задания к 3 практической работе.html'>Проверка исходных данных</a></li><li>4 <a href='Задания к 4 практической работе.html'>Взаимоисключающие случаи</a></li><li>5 <a href='Задания к 5 практической работе.html'>Работа с интервалами значений</a></li><li>6 <a href='Задания к 6 практической работе.html'>Реорганизация повторяющихся действий</a></li><li>7 <a href='Задания к 7 практической работе.html'>Вложенные циклы</a></li><li>8 <a href='Задания к 8 практической работе.html'>Базовые операции с массивами</a></li><li>9 <a href='Задания к 9 практической работе.html'>Использование числовых массивов</a></li><li>10 <a href='Задания к 10 практической работе.html'>Вычисление агрегатов</a></li><li>11 <a href='Задания к 11 практической работе.html'>Строки</a></li><li>12 <a href='Задания к 12 практической работе.html'>Обработка неизвестного объема данных</a></li><li>13 <a href='Задания к 13 практической работе.html'>Запись в файлы</a></li><li>14 <a href='Задания к 14 практической работе.html'>Методы</a></li><li>15 <a href='Задания к 15 практической работе.html'>Исключения</a></li><li>16 <a href='Задания к 16 практической работе.html'>Составные типы данных</a></li><li>17 <a href='Задания к 17 практической работе.html'>Внутреннее состояние</a></li><li>18 <a href='Задания к 18 практической работе.html'>Коллекции</a></li></ol></div><div class='nav'><ul><li><a href='#heading'>^</a></li><li><a href='#task9249' class='example'>1*</a><li><a href='#task4075'>2</a><li><a href='#task8395'>3</a><li><a href='#task7323'>4</a><li><a href='#task5902' class='example'>5*</a><li><a href='#task5568'>6</a><li><a href='#task2592'>7</a></ul><ul><li><a href='#task7517'>8</a><li><a href='#task5448'>9</a><li><a href='#task6572'>10</a><li><a href='#task5238'>11</a><li><a href='#task2084'>12</a><li><a href='#task5411'>13</a><li><a href='#task5171'>14</a><li><a href='#task1862'>15</a><li><a href='#task6302'>16</a></ul></div><div id="task9249" class="task_block">
+	<div class="task_id">9249</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Пользователь вводит два числа: R и T. Вывести две строки символов "#". В первой строке должно быть R штук символов. Во второй строке T штук. Если какое-либо число будет отрицательно, вывести сообщение об ошибке.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="2">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>R</th>
+			<th>T</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>5</td>
+			<td>11</td>
+			<td class="preformatted">#####
+###########</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>20</td>
+			<td>3</td>
+			<td class="preformatted">####################
+###</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>0</td>
+			<td>7</td>
+			<td class="preformatted">
+#######</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>4</td>
+			<td>0</td>
+			<td class="preformatted">####
+</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>-1</td>
+			<td>6</td>
+			<td class="preformatted">Значение R должно быть неотрицательно</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>6</td>
+			<td>-2</td>
+			<td class="preformatted">Значение T должно быть неотрицательно</td>
+		</tr>
+	</table>
+</div><div id="task4075" class="task_block empty_on_print">
+	<div class="task_id">4075</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран рамку шириной W.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Вводимые данные (W)</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>5</td>
+			<td class="preformatted">+---+
+|...|
++---+</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>1</td>
+			<td class="preformatted">+
+|
++</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>2</td>
+			<td class="preformatted">++
+||
+++</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>15</td>
+			<td class="preformatted">+-------------+
+|.............|
++-------------+</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>-2</td>
+			<td>Значение W должно быть неотрицательно</td>
+		</tr>
+	</table>
+</div><div id="task8395" class="task_block empty_on_print">
+	<div class="task_id">8395</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран буквы латинского алфавита a,b,c,d,e,f,g,h. Каждая буква должна быть на новой строчке. Количество букв в строчке (0<=W<=20) вводится с клавиатуры.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Вводимые данные (W)</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>1</td>
+			<td class="preformatted">a
+b
+c
+d
+e
+f
+g
+h</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>13</td>
+			<td class="preformatted">aaaaaaaaaaaaa
+bbbbbbbbbbbbb
+ccccccccccccc
+ddddddddddddd
+eeeeeeeeeeeee
+fffffffffffff
+ggggggggggggg
+hhhhhhhhhhhhh</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>-1</td>
+			<td>Значение W должно быть в интервале [0, 20]</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>21</td>
+			<td>Значение W должно быть в интервале [0, 20]</td>
+		</tr>
+	</table>
+</div><div id="task7323" class="task_block empty_on_print">
+	<div class="task_id">7323</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Пользователь вводит два числа: A и B. Выведите на экран две строки символов "*". В первой строке должно быть A штук символов. Во второй - на B штук больше.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="2">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>A</th>
+			<th>B</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>4</td>
+			<td>3</td>
+			<td class="preformatted">****
+*******</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>10</td>
+			<td>5</td>
+			<td class="preformatted">**********
+***************</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>7</td>
+			<td>0</td>
+			<td class="preformatted">*******
+*******</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>7</td>
+			<td>-3</td>
+			<td class="preformatted">*******
+****</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>2</td>
+			<td>-2</td>
+			<td class="preformatted">**
+</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>0</td>
+			<td>5</td>
+			<td class="preformatted">
+*****</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>7</td>
+			<td>-11</td>
+			<td class="preformatted">Количество символов во второй строке должно быть неотрицательным</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>-2</td>
+			<td>4</td>
+			<td>Количество символов в первой строке должно быть неотрицательным</td>
+		</tr>
+	</table>
+</div><div id="task5902" class="task_block hide_on_print">
+	<div class="task_id">5902</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Нарисовать изображение:</div>
+	<img src="images/task5902.png"/>
+</div><div id="task5568" class="task_block empty_on_print">
+	<div class="task_id">5568</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран цифры от 0 до 9. Каждая цифра должна быть на своей строчке. Количество цифр в строчке (0<=W<=20) вводится с клавиатуры.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Вводимые данные (W)</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>1</td>
+			<td class="preformatted">0
+1
+2
+3
+4
+5
+6
+7
+8
+9</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>10</td>
+			<td class="preformatted">0000000000
+1111111111
+2222222222
+3333333333
+4444444444
+5555555555
+6666666666
+7777777777
+8888888888
+9999999999</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>-2</td>
+			<td>Значение W должно быть в интервале [0, 20]</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>23</td>
+			<td>Значение W должно быть в интервале [0, 20]</td>
+		</tr>
+	</table>
+</div><div id="task2592" class="task_block empty_on_print">
+	<div class="task_id">2592</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран прямоугольник из символов. Символ S, ширина прямоугольника W, высота прямоугольника H вводятся с клавиатуры.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="3">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>S</th>
+			<th>W</th>
+			<th>H</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>#</td>
+			<td>5</td>
+			<td>3</td>
+			<td class="preformatted">#####
+#####
+#####</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>?</td>
+			<td>7</td>
+			<td>10</td>
+			<td class="preformatted">???????
+???????
+???????
+???????
+???????
+???????
+???????
+???????
+???????
+???????</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>*</td>
+			<td>90</td>
+			<td>0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>=</td>
+			<td>0</td>
+			<td>15</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>o</td>
+			<td>-2</td>
+			<td>8</td>
+			<td>Значение W должно быть неотрицательно</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>!</td>
+			<td>20</td>
+			<td>-6</td>
+			<td>Значение H должно быть неотрицательно</td>
+		</tr>
+	</table>
+</div><div id="link_c2_p9.2" class="task_block">
+	<div class="check_single">
+	<p>Практика показывает, что предыдущая задача решается очень быстро, если предварительно написать ее словесное описание:</p>
+	<p class="preformatted">//Получить от пользователя значение width
+//Если width отрицательно, вывести сообщение об ошибке и завершить работу программы
+//Если width 0, то завершить работу программы
+//Напечатать символ "плюс"
+//Напечатать width-2 символов "минус"
+//Напечатать символ "плюс" и перенести на новую строку
+//Напечатать вертикальную черту
+//Напечатать width-2 символов "точка"
+//Напечатать вертикальную черту и перенести на новую строку
+//Напечатать символ "плюс"
+//Напечатать width-2 символов "минус"
+//Напечатать символ "плюс"</p>
+<p>Такое словесное описание задачи называется "псевдокодом". Техника его использования подробно описана в главе 9.2 "Псевдокод для профи" части II книги "Совершенный код" <a href="Stiv_Makkonnell_-_Sovershenny_kod_2-e_izdanie.pdf#page=233" target="_blank">(открыть в новой вкладке)</a>. Пишите псевдокод для сложных задач, которые не решаются с ходу.</p>
+	</div>
+</div><div id="task7517" class="task_block empty_on_print">
+	<div class="task_id">7517</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Вывести на экран прямоугольную сетку координат. Пользователь вводит ширину W и высоту H.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="2">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>W</th>
+			<th>H</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>1</td>
+			<td>1</td>
+			<td class="preformatted"> 0
+0.|
+ -
+</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>7</td>
+			<td>3</td>
+			<td class="preformatted"> 0123456
+0.......|
+1.......|
+2.......|
+ -------
+</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>5</td>
+			<td>5</td>
+			<td class="preformatted"> 01234
+0.....|
+1.....|
+2.....|
+3.....|
+4.....|
+ -----</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>0</td>
+			<td>17</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>23</td>
+			<td>0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>-3</td>
+			<td>11</td>
+			<td>Значение W должно быть неотрицательно</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>7</td>
+			<td>-7</td>
+			<td>Значение H должно быть неотрицательно</td>
+		</tr>
+	</table>
+</div><div id="task5448" class="task_block empty_on_print">
+	<div class="task_id">5448</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран лесенку из символов. Символ S и высота лесенки H вводятся с клавиатуры.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="2">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>S</th>
+			<th>H</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>#</td>
+			<td>6</td>
+			<td class="preformatted">#
+##
+###
+####
+#####
+######</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>\</td>
+			<td>3</td>
+			<td class="preformatted">\
+\\
+\\\</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>^</td>
+			<td>0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>*</td>
+			<td>-2</td>
+			<td>Значение H должно быть неотрицательно</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>56</td>
+			<td>-3</td>
+			<td>Значение H должно быть неотрицательно</td>
+		</tr>
+	</table>
+</div><div id="task6572" class="task_block empty_on_print">
+	<div class="task_id">6572</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран по диагонали нечетные целые числа от А до В включительно по возрастанию. Значение A может быть как меньше, так и больше B.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="2">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>A</th>
+			<th>B</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>8</td>
+			<td>13</td>
+			<td class="preformatted">9
+.11
+..13</br></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>691</td>
+			<td>703</td>
+			<td class="preformatted">691
+.693
+..695
+...697
+....699
+.....701
+......703</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>19</td>
+			<td>3</td>
+			<td class="preformatted">3
+.5
+..7
+...9
+....11
+.....13
+......15
+.......17
+........19</td>
+		</tr>
+	</table>
+</div><div id="task5238" class="task_block empty_on_print">
+	<div class="task_id">5238</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Вывести на экран прямоугольник из символов. Квадрат разделен на две части. Верхняя левая часть заполнена символом &quot;+&quot;. Правая нижняя часть - &quot;#&quot;. Первая строка полностью заполнена знаками &quot;+&quot;, в каждой следующей строке справа, вместо одного из плюсов, пишется &quot;#&quot;. Пользователь вводит ширину W и высоту H.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="2">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>W</th>
+			<th>H</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>5</td>
+			<td>5</td>
+			<td class="preformatted">+++++
+++++#
++++##
+++###
++####</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>4</td>
+			<td>5</td>
+			<td class="preformatted">++++
++++#
+++##
++###
+####</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>3</td>
+			<td>7</td>
+			<td class="preformatted">+++
+++#
++##
+###
+###
+###
+###
+###</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>9</td>
+			<td>4</td>
+			<td class="preformatted">+++++++++
+++++++++#
++++++++##
+++++++###</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>0</td>
+			<td>5</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>7</td>
+			<td>0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>-11</td>
+			<td>4</td>
+			<td>Значение W должно быть неотрицательно</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>29</td>
+			<td>-2</td>
+			<td>Значение H должно быть неотрицательно</td>
+		</tr>
+	</table>
+</div><div id="task2084" class="task_block empty_on_print">
+	<div class="task_id">2084</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран в строчку через запятую нечетные числа от А до В включительно. Если A &lt; B, то в порядке возрастания. Иначе - в порядке убывания. Перед первым и после последнего числа запятой быть не должно.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="2">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>A</th>
+			<th>B</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>20</td>
+			<td>30</td>
+			<td>21, 23, 25, 27, 29</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>8</td>
+			<td>13</td>
+			<td>9, 11, 13</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>571</td>
+			<td>580</td>
+			<td>571, 573, 575, 577, 579</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>691</td>
+			<td>703</td>
+			<td>691, 693, 695, 697, 699, 701, 703</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>-71</td>
+			<td>-96</td>
+			<td>-71, -73, -75, -77, -79, -81, -83, -85, -87, -89, -91, -93, -95</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>64</td>
+			<td>58</td>
+			<td>63, 61, 59</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>19</td>
+			<td>7</td>
+			<td>19, 17, 15, 13, 11, 9, 7</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>401</td>
+			<td>390</td>
+			<td>401, 399, 397, 395, 393, 391</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>800</td>
+			<td>785</td>
+			<td>799, 797, 795, 793, 791, 789, 787, 785</td>
+		</tr>
+	</table>
+</div><div id="task5411" class="task_block empty_on_print">
+	<div class="task_id">5411</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран ряд чисел от P до Q включительно по возрастанию. Значение P может быть как меньше, так и больше Q. До середины строчки ставить между числами знак &quot;&lt;&quot;. После середины строчки - &quot;&gt;&quot;.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="2">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>P</th>
+			<th>Q</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>7</td>
+			<td>11</td>
+			<td>7&lt;8&lt;9&gt;10&gt;11</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>211</td>
+			<td>223</td>
+			<td>211&lt;212&lt;213&lt;214&lt;215&lt;216&lt;217&gt;218&gt;219&gt;220&gt;221&gt;222&gt;223</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>37</td>
+			<td>29</td>
+			<td>29&lt;30&lt;31&lt;32&lt;33&gt;34&gt;35&gt;36&gt;37</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>16</td>
+			<td>20</td>
+			<td>16&lt;17&lt;18&gt;19&gt;20</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>9</td>
+			<td>0</td>
+			<td>0&lt;1&lt;2&lt;3&lt;4&gt;5&gt;6&gt;7&gt;8&gt;9</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>600</td>
+			<td>600</td>
+			<td>600</td>
+		</tr>
+	</table>
+</div><div id="task5171" class="task_block empty_on_print">
+	<div class="task_id">5171</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран прямоугольник из чередующихся строк символов. Символ S1, S2, ширина прямоугольника W, высота прямоугольника H вводятся с клавиатуры.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="4">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>S1</th>
+			<th>S2</th>
+			<th>W</th>
+			<th>H</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>#</td>
+			<td>0</td>
+			<td>5</td>
+			<td>3</td>
+			<td class="preformatted">#####
+00000
+#####</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>?</td>
+			<td>-</td>
+			<td>7</td>
+			<td>10</td>
+			<td class="preformatted">???????
+-------
+???????
+-------
+???????
+-------
+???????
+-------
+???????
+-------</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>*</td>
+			<td>!</td>
+			<td>90</td>
+			<td>0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>=</td>
+			<td>+</td>
+			<td>0</td>
+			<td>15</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>o</td>
+			<td>T</td>
+			<td>-2</td>
+			<td>8</td>
+			<td>Значение W должно быть неотрицательно</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>!</td>
+			<td>.</td>
+			<td>20</td>
+			<td>-6</td>
+			<td>Значение H должно быть неотрицательно</td>
+		</tr>
+	</table>
+</div><div id="task1862" class="task_block empty_on_print">
+	<div class="task_id">1862</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Выведите на экран прямоугольник из чередующихся колонок символов. Символ S1, S2, ширина прямоугольника W, высота прямоугольника H вводятся с клавиатуры.</div>
+	<table class="check_values">
+		<tr>
+			<th rowspan="2">Номер теста</th>
+			<th colspan="4">Вводимые данные</th>
+			<th rowspan="2">Результат</th>
+		</tr>
+		<tr>
+			<th>S1</th>
+			<th>S2</th>
+			<th>W</th>
+			<th>H</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>#</td>
+			<td>0</td>
+			<td>5</td>
+			<td>3</td>
+			<td class="preformatted">#0#0#
+#0#0#
+#0#0#</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>?</td>
+			<td>-</td>
+			<td>7</td>
+			<td>10</td>
+			<td class="preformatted">?-?-?-?
+?-?-?-?
+?-?-?-?
+?-?-?-?
+?-?-?-?
+?-?-?-?
+?-?-?-?
+?-?-?-?
+?-?-?-?
+?-?-?-?
+?-?-?-?</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>*</td>
+			<td>!</td>
+			<td>90</td>
+			<td>0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>=</td>
+			<td>+</td>
+			<td>0</td>
+			<td>15</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>o</td>
+			<td>T</td>
+			<td>-2</td>
+			<td>8</td>
+			<td>Значение W должно быть неотрицательно</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>!</td>
+			<td>.</td>
+			<td>20</td>
+			<td>-6</td>
+			<td>Значение H должно быть неотрицательно</td>
+		</tr>
+	</table>
+</div><div id="task6302" class="task_block hide_on_print">
+	<div class="task_id">6302</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Нарисовать изображение:</div>
+	<img src="images/task6302.png"/>
+</div>Версия b1ae7f7. Подборка задач, выбор порядка подачи и подготовка тестовых данных - Крюков Александр, Омск 2013-2020. <a href='https://github.com/AKryukov92/programming-basics'>Основной репозиторий</a></body></html>
