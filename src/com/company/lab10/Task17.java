@@ -26,8 +26,16 @@ public class Task17 {
             System.out.print(" " + array[i]);
         }
         for (int i = 0; i < array.length; i++) {
+            int end =array.length;
+            int minIndex = i;
+            int minValue = array[i];
+            for (int j = i + 1; j < end; j++) {
+                if (array[j] < minValue) {
+                    minValue = array[j];
+                    minIndex = j;
+                }
+            }
 
-            int minIndex = min(array, i, array.length);
 
             int tmp = array[i];
             array[i] = array[minIndex];
@@ -39,6 +47,7 @@ public class Task17 {
             System.out.print(" " + array[i]);
         }
     }
+
 
     private static int min(int[] array, int start, int end) {
         int minIndex = start;

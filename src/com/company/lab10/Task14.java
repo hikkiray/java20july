@@ -20,18 +20,16 @@ public class Task14 {
 
         }
         System.out.println();
+        int minIndex =0;
 
-        boolean isSort = false;
         int min = num[0];
-        while (!isSort){
-            isSort = true;
             for(int i = 1; i < arr.length; i++){
                 if (num[i] < min){
                     min = num[i];
-                    isSort = false;
+                    minIndex = i;
                 }
             }
-        }
+        //System.out.print(minIndex);
         System.out.print("Минимальный элемент это : "+ min);
 
     }
