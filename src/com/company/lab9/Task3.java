@@ -1,5 +1,4 @@
-package com.company.LAB9;
-import javax.swing.plaf.synth.SynthScrollBarUI;
+package com.company.lab9;
 import java.util.Scanner;
 
 public class Task3 {

@@ -1,4 +1,4 @@
-package com.company.LAB9;
+package com.company.lab9;
 import java.util.Scanner;
 public class Task7 {
     public static void main(String[] args){
