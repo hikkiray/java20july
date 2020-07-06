@@ -1,4 +1,4 @@
-package com.company.lab10;
+package com.company;
 
 import java.util.Scanner;
 
