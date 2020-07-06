@@ -21,8 +21,8 @@ public class Main {
 
             num[i] = num[i]* m;
         }
-        for (int i = 0; i < num.length; i++){
-            System.out.print(num[i]);
+        for (int value : num) {
+            System.out.print(value);
             System.out.print(" ");
         }
     }

@@ -16,7 +16,8 @@ public class Task7 {
         }
         int temp = 1;
         boolean isSort = true;
-        for (int i = 1; i < arr.length; i++){
+        for (int i = 1; i < arr.length && isSort; i++){
+
             if(num[i] >= num[i-1]){
                 temp +=1;
             }
@@ -24,11 +25,14 @@ public class Task7 {
             else {
                 System.out.print("Элемент со значением " + num[i] + " на индексе " + temp + " нарушает закономерность");
                 isSort = false;
+                //return;
             }
 
         }
         if (isSort)
-            System.out.print("Значения отсортированы по возрастанию");
+        System.out.print("Значения отсортированы по возрастанию");
+
+
 
     }
 }
