@@ -17,6 +17,7 @@ public class    Task10 {
         for(int i =0; i < arr.length; i++){
             num[i] = Integer.parseInt(arr[i]);
         }
+
         double average =0;
         if (arr.length>0){
             double sum  = 0;
