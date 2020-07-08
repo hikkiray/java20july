@@ -6,12 +6,21 @@ public class Task21 {
         System.out.println("Введите левый массив");
         String leftArr = In.nextLine();
         String[] lArr = leftArr.split(" ");
-        System.out.println("Введите левый массив");
+        System.out.println("Введите правый массив");
         String rightArr = In.nextLine();
         String[] rArr = rightArr.split(" ");
-        for (int i = 0; i < lArr.length; i++) {
-            if (lArr[i].equals(rArr[i])){
-                break;
+
+
+        for (int i = 0; i < lArr.length ; i++) {
+            boolean x = true;
+            for (int j = 0; j < lArr.length ; j++) {
+                if (lArr[i].equals(rArr[j])){
+                    x = false;
+                }
+
+            }
+            if (x){
+                System.out.print(lArr[i] + " ");
             }
         }
 
