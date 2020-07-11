@@ -1,7 +1,7 @@
 package com.company.lab8;
 import java.util.Scanner;
 public class Task20 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner In = new Scanner(System.in);
         System.out.print("Введите первый массив");
         String firstArr = In.nextLine();
@@ -10,37 +10,29 @@ public class Task20 {
         System.out.print("Введите второй массив");
         String secondArr = In.nextLine();
         String[] sArr = secondArr.split(" ");
-        int counter = 0;
 
         /**
          * Проверяем какой массив больше. Если больше второй массив то повторяем цикл пока i < (длины второго) цмкла,
          * иначе повторяем цикл i < (длины первого массива) раз
          */
 
-        if (sArr.length >= fArr.length) {
+        if (fArr.length >= sArr.length) {
             for (int i = 0; i < sArr.length; i++) {
-                if (fArr[i].equals(sArr[i]) && i < fArr.length -1) {
-                    counter++;
-                } else {
-                    counter++;
-                    System.out.print("Массивы начинают различаться на индексе " + counter);
+                if (!fArr[i].equals(sArr[i])) {
+                    System.out.println("Элементы не совпадают на индексе :" + i);
                     return;
                 }
-
             }
-        }
-        else {
+        } else {
             for (int i = 0; i < fArr.length; i++) {
-                if (sArr[i].equals(fArr[i]) && i < sArr.length -1) {
-                    counter++;
-
-                } else {
-                    counter ++;
-                    System.out.print("Массивы начинают различаться на индексе " + counter);
+                if (!sArr[i].equals(fArr[i])) {
+                    System.out.println("Элементы не совпадают на индексе :" + i);
                     return;
                 }
-
             }
+
+
         }
+
     }
 }

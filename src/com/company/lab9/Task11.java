@@ -22,14 +22,15 @@ public class Task11 {
             if (num[i] >= num[i + 1]) {
                 System.out.print("Нарушена последовательность");
                 return;
+            }else if (num[i] == num[i+1]){
+                System.out.print("Присудствуюст дубликаты");
+                return;
             }
         }
         for (int i = 0; i < num.length -1 ; i++){
             if (num[i] + 1 != num[i+1]){
-                for (int j = 0; j <= (num[i+1] -num[i]);j++){
-                    if(num[i] + j != num[i] && num[i]+j != num[i+1]) {
+                for (int j = 1; j <= (num[i+1] -num[i]) -1;j++){
                         System.out.print(num[i] + j);
-                    }
                 }
             }
 
