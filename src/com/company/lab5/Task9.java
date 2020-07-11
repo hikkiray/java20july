@@ -15,15 +15,17 @@ public class Task9 {
         System.out.print("Введите Yb :");
         int Yb = In.nextInt();
 
-        int delx = Xb - Xa; //delata x
-        int dely = Yb - Ya; //delat y
+        double delx = Xb - Xa; //delata x
+        double dely = Yb - Ya; //delat y
         int quater = 1;
         double angle = 0;
         double r = Math.atan(dely/delx); // Находим arctg  =r
-        int horizontal = delx*delx + dely*dely; // Определяем горизонатльное положение
+        r = Math.toDegrees(r);
+
+        double horizontal = delx*delx + dely*dely; // Определяем горизонатльное положение
         if (delx >= 0 && dely > 0){
             angle = r;
-            System.out.println("\n"+ " Четверть :" +quater+ "\n"+" Дирекционный угол :" +Math.toDegrees(angle)+"\n"+" Горизонтальное проложение :" +Math.sqrt(horizontal));
+            System.out.println("\n"+ " Четверть :" +quater+ "\n"+" Дирекционный угол :" +angle +"\n"+" Горизонтальное проложение :" +Math.sqrt(horizontal));
         }else if (delx < 0 && dely >= 0){
             angle = 180 - r;
             quater = 2;
