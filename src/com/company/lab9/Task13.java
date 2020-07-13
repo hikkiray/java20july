@@ -26,7 +26,7 @@ public class Task13 {
         }
         String[] OX = new String[arr.length];
         for (int i = 0; i < arr.length; i++) {
-            OX[i] = String.
+
         }
 
     }
