@@ -8,7 +8,7 @@ public class Task14 {
         String fragment = In.nextLine();
         int r = -1;
 
-        while ()
+
 
         for (int i = 0; i < data.length() && r>-1; i ++) {
              r = data.indexOf(fragment , r+1);
