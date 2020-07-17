@@ -20,11 +20,8 @@ public class Task8 {
             System.out.print("Значение CB должно быть неотрицательно");
             return;
         }
-        for (int i = 0; i < ca; i++) {
-            System.out.print(data.charAt(i));
-        }
-        for (int i = ca+cb; i < data.length(); i++) {
-            System.out.print(data.charAt(i));
-        }
+       String x = data.substring(0, ca);
+        String y = data.substring(ca+cb, data.length());
+        System.out.print(x + y);
     }
 }
