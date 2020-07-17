@@ -18,22 +18,21 @@ public class Task20 {
          */
 
         if (sArr.length >= fArr.length) {
-            for (int i = 0; i < sArr.length; i++) {
+            for (int i = 0; i < fArr.length; i++) {
                 if (fArr[i].equals(sArr[i]) && i < fArr.length -1) {
-                    counter++;
-                } else {
-                    counter++;
-                    System.out.print("Массивы начинают различаться на индексе " + counter);
+                    
+                } else{
+                    System.out.print("Массивы начинают различаться на индексе " + i);
                     return;
                 }
 
             }
         }
         else {
-            for (int i = 0; i < fArr.length; i++) {
+            for (int i = 0; i < sArr.length; i++) {
                 if (sArr[i].equals(fArr[i]) && i < sArr.length -1) {
-                    counter++;
-
+                    System.out.println("Массивы одинаковы");
+                    break;
                 } else {
                     counter ++;
                     System.out.print("Массивы начинают различаться на индексе " + counter);
