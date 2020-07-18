@@ -2,7 +2,6 @@ package com.company.lab9;
 import java.util.Scanner;
 public class Task13 {
     public static void main(String[] args) {
-
         /**
          * Сделать два массива с буквами и цифрами
          * Переделать массив с буквами в массив с индексами
@@ -10,23 +9,23 @@ public class Task13 {
          * Пройтись по строкам массива и заменить 0 на пробел а 1 на #
          */
         System.out.print("Введите координаты :");
+        System.out.print("Введите целые числа разделенные ; :");
         Scanner In = new Scanner(System.in);
         String data = In.nextLine();
         if(data.isEmpty()){
             System.out.print("Исходная строка пуста");
             return;
         }
-        /**
-         * Записываем числа в OY
-         */
         String[] arr = data.split(";");
-        int [] OY = new int[arr.length];
-        for(int i =1; i < arr.length; i +=2){
-            OY[i] = Integer.parseInt(arr[i]);
+        int [] num = new int[arr.length];
+        for(int i =0; i < arr.length; i++){
+            i++;
+            num[i] = Integer.parseInt(arr[i]);
         }
-        String[] OX = new String[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-
+        for(int i =1;+ i < arr.length; i++){
+            String[]  oX = new String[arr.length /2];
+            //num[i] = oX[i];
+            i++;
         }
 
     }
