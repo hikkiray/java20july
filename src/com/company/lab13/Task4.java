@@ -96,3 +96,5 @@ public class Task4 {
         Desktop.getDesktop().open(file);
     }
 }
+
+// найти отдельно пересечение по X и по Y, затем скомбинировать их и получить квадрат
